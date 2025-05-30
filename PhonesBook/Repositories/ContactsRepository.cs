@@ -31,5 +31,13 @@ namespace PhonesBook.Repositories
         {
             return contacts;
         }
+        public int GetContactsCount()
+        {
+            return contacts.Count;
+        }
+        public void RemoveContact(int id)
+        {
+            contacts.RemoveAt(id);
+        }
     }
 }

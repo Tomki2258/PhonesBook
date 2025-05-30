@@ -27,10 +27,15 @@ namespace PhonesBook.Models
             
             if (Contact.CheckName(contact.name) && Contact.CheckNumber(contact.number)){
                 Debug.WriteLine("Data is correct");
+                contact.id = contactsRepository.GetContactsCount();
                 contactsRepository.AddContact(contact);
                 return true;
             }
             return false;    
+        }
+        public void Remove(int id)
+        {
+            contactsRepository.RemoveContact(id);
         }
     }
 }
