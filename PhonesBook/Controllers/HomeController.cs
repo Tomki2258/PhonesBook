@@ -7,15 +7,16 @@ namespace PhonesBook.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly MainViewModel mainViewModel =  MainViewModel.GetInstance();
 
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public IActionResult MainView()
         {
-            return View();
+            return View(mainViewModel);
         }
 
         public IActionResult Privacy()
