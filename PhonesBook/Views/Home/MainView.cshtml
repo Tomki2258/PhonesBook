@@ -1,9 +1,19 @@
 ﻿@model MainViewModel
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
+    <h1 class="display-4">Phone book</h1>
+    <table class="table table-bordered">
+        <tr>
+            <th>Name</th>
+            <th>Number</th>
+        </tr>
     @foreach(var contact in @Model.GetContacts())
     {
-        <p>@contact.name @contact.number</p>
+        <tr>
+                <td>@contact.name </td>
+                <td>@contact.number</td>
+        </tr>
     }
+    </table>
+    <a asp-controller="Home" asp-action="Create">Create</a>
 </div>

@@ -18,7 +18,15 @@ namespace PhonesBook.Controllers
         {
             return View(mainViewModel);
         }
-
+        public IActionResult Create()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Create(Contact contact)
+        {
+            return RedirectToAction("MainView");
+        }
         public IActionResult Privacy()
         {
             return View();
