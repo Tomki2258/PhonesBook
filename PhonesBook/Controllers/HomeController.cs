@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using PhonesBook.Fabrics;
 using PhonesBook.Models;
 using PhonesBook.Repositories;
 
@@ -50,15 +51,20 @@ namespace PhonesBook.Controllers
             mainViewModel.Remove(id);
             return RedirectToAction("MainView");
         }
+        [HttpPost]
         public IActionResult Modify(int id) {
             modifyViewModel.contactID = id;
             return View(modifyViewModel);
         }
         [HttpPost]
-        public IActionResult Modify(Contact contat)
+        public IActionResult ModifyContact(Contact contact)
         {
-            Debug.WriteLine("Redirect function");
-            return RedirectToAction("MainView");
+            if (ContactFabric.CheckContact(contact))
+            {
+                mainViewModel.ReplaceContact(contact.id, contact);
+                return RedirectToAction("MainView");
+            }
+            return View(modifyViewModel);
         }
     }
 }

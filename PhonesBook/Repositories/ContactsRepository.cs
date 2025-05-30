@@ -39,5 +39,10 @@ namespace PhonesBook.Repositories
         {
             contacts.RemoveAt(id);
         }
+        public void ReplaceContact(int id,Contact contact)
+        {
+            contacts.RemoveAt(id);
+            contacts.Add(contact);
+        }
     }
 }

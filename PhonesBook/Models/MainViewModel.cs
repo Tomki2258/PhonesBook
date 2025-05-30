@@ -37,5 +37,9 @@ namespace PhonesBook.Models
         {
             contactsRepository.RemoveContact(id);
         }
+        public void ReplaceContact(int id, Contact contact)
+        {
+            contactsRepository.ReplaceContact(id,contact);
+        }
     }
 }
