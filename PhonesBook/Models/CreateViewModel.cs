@@ -6,7 +6,6 @@ namespace PhonesBook.Models
     {
         private readonly ContactsRepository contactsRepository = ContactsRepository.GetInstance();
         
-
         public Contact contact { get; set; } = new Contact();
     }
 }

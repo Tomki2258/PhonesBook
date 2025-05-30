@@ -1,4 +1,5 @@
 ﻿using PhonesBook.Repositories;
+using System.Diagnostics;
 
 namespace PhonesBook.Models
 {
@@ -20,6 +21,16 @@ namespace PhonesBook.Models
         public List<Contact > GetContacts()
         {
             return contactsRepository.GetContacts();
+        }
+        public bool AddContact(Contact contact)
+        {
+            
+            if (Contact.CheckName(contact.name) && Contact.CheckNumber(contact.number)){
+                Debug.WriteLine("Data is correct");
+                contactsRepository.AddContact(contact);
+                return true;
+            }
+            return false;    
         }
     }
 }

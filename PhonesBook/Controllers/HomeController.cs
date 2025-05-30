@@ -17,7 +17,7 @@ namespace PhonesBook.Controllers
         }
 
         public IActionResult MainView()
-        {
+        {   
             return View(mainViewModel);
         }
         public IActionResult Create()
@@ -28,7 +28,11 @@ namespace PhonesBook.Controllers
         public IActionResult Create(Contact contact)
         {
             Debug.WriteLine($"Contact info {contact.name} {contact.number}");
-            return RedirectToAction("MainView");
+            if (mainViewModel.AddContact(contact))
+            {
+                return RedirectToAction("MainView");
+            }
+            return View();
         }
         public IActionResult Privacy()
         {
