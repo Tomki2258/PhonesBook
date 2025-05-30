@@ -5,7 +5,16 @@ namespace PhonesBook.Repositories
     public class ContactsRepository : IContactRepository
     {
         private List<Contact> contacts = new List<Contact>();
+        private static ContactsRepository contactsRepository;
 
+        public static ContactsRepository GetInstance()
+        {
+            if(contactsRepository == null)
+            {
+                contactsRepository = new ContactsRepository();
+            }
+            return contactsRepository;
+        }
         public ContactsRepository()
         {
             var contact = new Contact();

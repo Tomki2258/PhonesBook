@@ -1,12 +1,14 @@
-﻿<div>
+﻿@model CreateViewModel
+
+<div>
     <form asp-action="Create" method="post">
         <div>
-            <label  class="form-label">Name</label>
-            <input class="form-control" />
+            <label asp-for="contact.name" class="form-label">Name</label>
+            <input asp-for="contact.name" class="form-control" />
         </div>
         <div>
-            <label class="form-label">Number</label>
-            <input class="form-control" />
+            <label asp-for="contact.number" class="form-label">Number</label>
+            <input asp-for="contact.number" class="form-control" />
         </div>
         <button type="submit" class="btn btn-primary">Add contact</button>
     </form>

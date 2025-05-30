@@ -1,12 +1,14 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using PhonesBook.Models;
+using PhonesBook.Repositories;
 
 namespace PhonesBook.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly CreateViewModel createViewModel = new CreateViewModel();
         private readonly MainViewModel mainViewModel =  MainViewModel.GetInstance();
 
         public HomeController(ILogger<HomeController> logger)
@@ -20,11 +22,12 @@ namespace PhonesBook.Controllers
         }
         public IActionResult Create()
         {
-            return View();
+            return View(createViewModel);
         }
         [HttpPost]
         public IActionResult Create(Contact contact)
         {
+            Debug.WriteLine($"Contact info {contact.name} {contact.number}");
             return RedirectToAction("MainView");
         }
         public IActionResult Privacy()
