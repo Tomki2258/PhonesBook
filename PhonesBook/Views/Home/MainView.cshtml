@@ -13,8 +13,11 @@
                 <td>@contact.name </td>
                 <td>@contact.number</td>
                 <td>
-                <form name="ContactForm" asp-action="Remove" asp-route-id="@contact.id" method="post" style="display:inline;">
+                <form asp-action="Remove" asp-route-id="@contact.id" method="post" style="display:inline;">
                     <button type="submit" class="btn btn-danger btn-sm">Remove</button>
+                </form>
+                    <form asp-action="Modify" asp-route-id="@contact.id" style="display:inline;">
+                    <button type="submit" class="btn btn-danger btn-sm">Modify</button>
                 </form>
                 </td>
         </tr>

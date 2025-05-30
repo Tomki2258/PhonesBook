@@ -10,7 +10,7 @@ namespace PhonesBook.Controllers
         private readonly ILogger<HomeController> _logger;
         private readonly CreateViewModel createViewModel = new CreateViewModel();
         private readonly MainViewModel mainViewModel =  MainViewModel.GetInstance();
-
+        private readonly ModifyViewModel modifyViewModel = new ModifyViewModel();
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
@@ -48,6 +48,16 @@ namespace PhonesBook.Controllers
         public IActionResult Remove(int id)
         {
             mainViewModel.Remove(id);
+            return RedirectToAction("MainView");
+        }
+        public IActionResult Modify(int id) {
+            modifyViewModel.contactID = id;
+            return View(modifyViewModel);
+        }
+        [HttpPost]
+        public IActionResult Modify(Contact contat)
+        {
+            Debug.WriteLine("Redirect function");
             return RedirectToAction("MainView");
         }
     }
