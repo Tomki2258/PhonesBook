@@ -1,4 +1,5 @@
-﻿using PhonesBook.Repositories;
+﻿using PhonesBook.Fabrics;
+using PhonesBook.Repositories;
 using System.Diagnostics;
 
 namespace PhonesBook.Models
@@ -24,8 +25,7 @@ namespace PhonesBook.Models
         }
         public bool AddContact(Contact contact)
         {
-            
-            if (Contact.CheckName(contact.name) && Contact.CheckNumber(contact.number)){
+            if (ContactFabric.CheckContact(contact)){
                 Debug.WriteLine("Data is correct");
                 contact.id = contactsRepository.GetContactsCount();
                 contactsRepository.AddContact(contact);
